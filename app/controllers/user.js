@@ -1,5 +1,5 @@
-const { httpError } = require('../helpers/handleError')
-const User = require('../models/user')
+import { httpError } from '../helpers/handleError';
+import User from '../models/user';
 
 const list = async (req, res) => {
     try {

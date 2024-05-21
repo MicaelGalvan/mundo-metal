@@ -1,11 +1,12 @@
-require('dotenv').config()
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+import 'dotenv/config'
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import { dbConnect } from './config/mongo';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+
 const app = express()
-const { dbConnect } = require('./config/mongo')
-
-
 const PORT = process.env.PORT || 3000
 
 app.use(cors())
@@ -25,5 +26,5 @@ app.use('/api', require('./app/routes'))
 
 dbConnect()
 app.listen(PORT, () => {
-    console.log("SERVER UP")
+  console.log("SERVER UP")
 });

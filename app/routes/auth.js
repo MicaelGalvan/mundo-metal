@@ -1,7 +1,7 @@
-const express = require('express')
-const router = express.Router()
+import express from 'express';
+import router from express.Router();
 
-const { loginCtrl, registerCtrl } = require('../controllers/auth')
+import { loginCtrl, registerCtrl } from '../controllers/auth';
 
 router.post('/login', loginCtrl)
 

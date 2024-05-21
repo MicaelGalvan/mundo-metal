@@ -1,7 +1,7 @@
-const { httpError } = require('../helpers/handleError')
-const { encrypt, compare } = require('../helpers/handleBcrypt')
-const { tokenSign } = require('../helpers/generateToken')
-const userModel = require('../models/user')
+import { httpError } from '../helpers/handleError';
+import { encrypt, compare } from '../helpers/handleBcrypt';
+import { tokenSign } from '../helpers/generateToken';
+import userModel from '../models/user';
 
 
 const loginCtrl = async (req, res) => {

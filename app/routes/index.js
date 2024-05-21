@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const fs = require('fs');
-const { httpError } = require("../helpers/handleError");
+import fs from 'fs';
+import { httpError } from "../helpers/handleError";
 
 const pathRouter = `${__dirname}`;
 const removeExtension = (fileName) => {

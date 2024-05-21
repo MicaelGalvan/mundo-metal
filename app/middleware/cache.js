@@ -1,4 +1,4 @@
-const getExpeditiousCache = require('express-expeditious');
+import getExpeditiousCache from 'express-expeditious';
 
 const defaultOptions = {
     namespace: 'expresscache',

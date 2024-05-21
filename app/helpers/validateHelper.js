@@ -1,5 +1,5 @@
-const { validationResult } = require('express-validator');
-// const { httpError } = require("../helpers/handleError");
+import { validationResult } from 'express-validator';
+// import { httpError } from "../helpers/handleError";
 
 const validateResult = (req, res, next) => {
     try {

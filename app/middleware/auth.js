@@ -1,4 +1,4 @@
-const { verifyToken } = require('../helpers/generateToken')
+import { verifyToken } from '../helpers/generateToken';
 
 const checkAuth = async (req, res, next) => {
     try {

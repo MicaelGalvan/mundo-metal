@@ -1,4 +1,4 @@
-const { logger } = require("../helpers/logging");
+import { logger } from "../helpers/logging";
 
 const httpError = (res, err) => {
     const message = err?.message || "ERROR NOT SPECIFIED";

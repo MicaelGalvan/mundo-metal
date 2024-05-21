@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const { list, get, remove, create, update } = require('../controllers/user');
-const { validateCreate } = require('../validators/user');
+import { list, get, remove, create, update } from '../controllers/user';
+import { validateCreate } from '../validators/user';
 
 router.get('/all', list);
 router.get('/:id', get);

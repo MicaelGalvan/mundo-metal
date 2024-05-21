@@ -1,5 +1,5 @@
-const { verifyToken } = require('../helpers/generateToken')
-const userModel = require('../models/user')
+import { verifyToken } from '../helpers/generateToken';
+import userModel from '../models/user';
 
 const checkRoleAuth = (roles) => async (req, res, next) => {
     try {
