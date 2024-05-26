@@ -1,12 +1,12 @@
-import bcrypt from 'bcryptjs';
+import { User } from '../../models/user';
 import { generateToken } from '../../helpers/generateToken';
-import User from '../../models/user';
+import bcrypt from 'bcryptjs';
 
 const userResolvers = {
     Query: {
         getUser: async (_, { id }) => {
             try {
-                const user = await User.findById(id);
+                const user = await User.findByPk(id);
                 if (!user) {
                     throw new Error('User not found');
                 }
@@ -17,7 +17,7 @@ const userResolvers = {
         },
         getUsers: async () => {
             try {
-                const users = await User.find();
+                const users = await User.findAll();
                 return users;
             } catch (error) {
                 throw new Error(error.message);
@@ -28,8 +28,7 @@ const userResolvers = {
         createUser: async (_, { username, email, password }) => {
             try {
                 const hashedPassword = await bcrypt.hash(password, 10);
-                const user = new User({ username, email, password: hashedPassword });
-                await user.save();
+                const user = await User.create({ username, email, password: hashedPassword });
                 return user;
             } catch (error) {
                 throw new Error(error.message);
@@ -37,7 +36,7 @@ const userResolvers = {
         },
         loginUser: async (_, { username, password }) => {
             try {
-                const user = await User.findOne({ username });
+                const user = await User.findOne({ where: { username } });
                 if (!user) {
                     throw new Error('User not found');
                 }

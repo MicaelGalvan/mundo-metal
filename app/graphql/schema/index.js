@@ -1,8 +1,14 @@
 import { gql } from 'apollo-server-express';
-import typeDefs from '../types';
+import userSchema from '../users/schema/userSchema';
 
-const schema = gql`
-  ${typeDefs}
+const rootSchema = gql`
+  type Query {
+    _: String
+  }
+
+  type Mutation {
+    _: String
+  }
 `;
 
-module.exports = schema;
+module.exports = [rootSchema, userSchema];
