@@ -2,11 +2,21 @@ import 'dotenv/config'
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { dbConnect } from './config/mongo';
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { ApolloServer } from 'apollo-server-express';
+import typeDefs from './app/graphql/schema';
+import resolvers from './app/graphql/resolvers';
 
 const app = express()
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+server.applyMiddleware({ app });
+
+
+
 const PORT = process.env.PORT || 3000
 
 app.use(cors())
@@ -24,7 +34,6 @@ app.use((req, res, next) => {
 
 app.use('/api', require('./app/routes'))
 
-dbConnect()
 app.listen(PORT, () => {
   console.log("SERVER UP")
 });
