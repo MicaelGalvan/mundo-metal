@@ -1,10 +1,15 @@
-import userResolvers from '../users/resolvers/userResolvers';
+import userResolvers from '../../users/graphql/resolvers/user.js';
+import authResolvers from '../../auth/graphql/resolvers/auth.js';
 
-module.exports = {
+const resolvers = {
     Query: {
         ...userResolvers.Query,
     },
     Mutation: {
         ...userResolvers.Mutation,
+        ...authResolvers.Mutation,
     },
 };
+
+
+export default resolvers;

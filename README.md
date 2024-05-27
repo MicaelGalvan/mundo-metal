@@ -1,61 +1,50 @@
-app/
-|-- auth/
-|   |-- controllers/
-|       |-- auth.js
-|   |-- graphql/
-|       |-- resolvers/
-|           |-- auth.js
-|       |-- types/
-|           |-- auth.js
-|   |-- middleware/
-|       |-- auth.js
-|       |-- roleAuth.js
-|   |-- models/
-|       |-- auth.js
-|-- users/
-|   |-- controllers/
-|       |-- user.js
-|   |-- graphql/
-|       |-- resolvers/
-|           |-- user.js
-|       |-- types/
-|           |-- user.js
-|   |-- validators/
-|       |-- user.js
-|   |-- models/
-|       |-- user.js
-|-- products/
-|   |-- controllers/
-|       |-- product.js
-|   |-- graphql/
-|       |-- resolvers/
-|           |-- product.js
-|       |-- types/
-|           |-- product.js
-|   |-- models/
-|       |-- product.js
-|-- config/
-|   |-- schema.js
-|-- helpers/
-|   |-- generateToken.js
-|   |-- handleBcrypt.js
-|   |-- handleError.js
-|   |-- logging.js
-|   |-- validateHelper.js
-|-- logs/
-|   |-- logs.json
-|-- routes/
-|   |-- index.js
-|-- graphql/
-|   |-- schema/
-|       |-- index.js
-|   |-- resolvers/
-|       |-- index.js
-|-- node_modules/
-|-- .env
-|-- .env.example
-|-- .gitignore
-|-- app.js
-|-- Dockerfile
-|-- package-lock.json
-|-- package.json
+project-root/
+├── src/
+│   ├── app.js
+│   ├── config/
+│   │   ├── config.js
+│   │   ├── development.js
+│   │   ├── production.js
+│   │   └── ... (other environment-specific configs)
+│   ├── db/
+│   │   ├── migrations/
+│   │   │   └── ... (database migration scripts)
+│   │   ├── models/
+│   │   │   └── ... (Sequelize models)
+│   │   └── index.js (Sequelize connection setup)
+│   ├── domains/
+│   │   ├── users/
+│   │   │   ├── controllers/
+│   │   │   ├── models/
+│   │   │   ├── resolvers/
+│   │   │   └── types/
+│   │   └── products/
+│   │       ├── controllers/
+│   │       ├── models/
+│   │       ├── resolvers/
+│   │       └── types/
+│   ├── graphql/
+│   │   ├── resolvers/
+│   │   │   └── index.js (root resolver)
+│   │   ├── schema.js (GraphQL schema definition)
+│   │   └── types/
+│   │       └── ... (GraphQL type definitions)
+│   ├── middleware/
+│   │   ├── auth.js
+│   │   └── ... (other middleware functions)
+│   ├── routes/
+│   │   └── ... (Express route definitions)
+│   ├── services/
+│   │   └── ... (business logic services)
+│   ├── utils/
+│   │   ├── helpers.js
+│   │   └── logger.js
+│   └── index.js (application entry point)
+├── tests/
+│   └── ... (test files)
+├── .env
+├── .eslintrc.js
+├── .gitignore
+├── .prettierrc
+├── package.json
+└── README.md

@@ -20,4 +20,4 @@ const authResolvers = {
     },
 };
 
-module.exports = authResolvers;
+export default authResolvers;
