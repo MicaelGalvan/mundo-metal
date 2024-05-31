@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import fs from 'fs';
-import { httpError } from "../helpers/handleError";
+// import { httpError } from "../helpers/_handleError";
 
 const pathRouter = `${__dirname}`;
 const removeExtension = (fileName) => {
@@ -19,7 +19,7 @@ fs.readdirSync(pathRouter).filter((file) => {
 router.get('*', (req, res) => {
     res.status(404);
     res.send({ error: 'Not Found' });
-    httpError(res, { message: 'Not Found', status: 404 });
+    // httpError(res, { message: 'Not Found', status: 404 });
 })
 
 module.exports = router;

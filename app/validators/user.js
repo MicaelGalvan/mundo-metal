@@ -1,15 +1,7 @@
-import { check } from 'express-validator';
-import { validateResult } from '../helpers/validateHelper';
+import { body } from 'express-validator';
 
-const validateCreate = [
-    check('firstName').exists().trim().not().isEmpty().isString(),
-    check('lastName').exists().trim().not().isEmpty().isString(),
-    check('dni').exists().trim().not().isEmpty().isNumeric(),
-    check('role').exists().trim().not().isEmpty().isString(),
-    check('projectKey').exists().trim().not().isEmpty().isString(),
-    check('hiddenStaffNotes').isString(),
-    check('email').exists().isEmail(),
-    (req, res, next) => { validateResult(req, res, next) }
-]
-
-module.exports = { validateCreate }
+export const userValidator = [
+  body('email').isEmail().withMessage('Invalid email address'),
+  body('name').notEmpty().withMessage('Name is required'),
+  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
+];
