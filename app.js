@@ -3,8 +3,8 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { ApolloServer } from 'apollo-server-express';
-import typeDefs from './app/graphql/schema/index.js';
-import resolvers from './app/graphql/resolvers/index.js';
+import typeDefs from './app/graphql/schema';
+import resolvers from './app/graphql/resolvers';
 const db = require('./app/models');
 
 const app = express()

@@ -1,35 +1,55 @@
-import User from '../../models/user.js';
-import { tokenSign } from '../../../helpers/generateToken.js';
+import { User } from '../../models/user';
+import { generateToken } from '../../helpers/generateToken';
 import bcrypt from 'bcryptjs';
 
 const userResolvers = {
     Query: {
         getUser: async (_, { id }) => {
-            return await User.findById(id);
+            try {
+                const user = await User.findByPk(id);
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                return user;
+            } catch (error) {
+                throw new Error(error.message);
+            }
         },
         getUsers: async () => {
-            return await User.find();
+            try {
+                const users = await User.findAll();
+                return users;
+            } catch (error) {
+                throw new Error(error.message);
+            }
         },
     },
     Mutation: {
         createUser: async (_, { username, email, password }) => {
-            const hashedPassword = await bcrypt.hash(password, 10);
-            const user = new User({ username, email, password: hashedPassword });
-            await user.save();
-            return user;
+            try {
+                const hashedPassword = await bcrypt.hash(password, 10);
+                const user = await User.create({ username, email, password: hashedPassword });
+                return user;
+            } catch (error) {
+                throw new Error(error.message);
+            }
         },
         loginUser: async (_, { username, password }) => {
-            const user = await User.findOne({ username });
-            if (!user) {
-                throw new Error('User not found');
+            try {
+                const user = await User.findOne({ where: { username } });
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                const valid = await bcrypt.compare(password, user.password);
+                if (!valid) {
+                    throw new Error('Incorrect password');
+                }
+                return generateToken(user);
+            } catch (error) {
+                throw new Error(error.message);
             }
-            const valid = await bcrypt.compare(password, user.password);
-            if (!valid) {
-                throw new Error('Incorrect password');
-            }
-            return tokenSign(user);
         },
     },
 };
 
-export default userResolvers;
+module.exports = userResolvers;

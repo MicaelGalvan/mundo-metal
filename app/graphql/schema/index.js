@@ -1,5 +1,5 @@
 import { gql } from 'apollo-server-express';
-import userSchema from '../../users/graphql/schema/user.js';
+import userSchema from '../users/schema/userSchema';
 
 const rootSchema = gql`
   type Query {
@@ -11,4 +11,4 @@ const rootSchema = gql`
   }
 `;
 
-export default [rootSchema, userSchema];
+module.exports = [rootSchema, userSchema];
