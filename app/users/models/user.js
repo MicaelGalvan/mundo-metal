@@ -1,20 +1,54 @@
-module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define('User', {
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
-    });
+// const mongoose = require('mongoose');
+// const Schema = mongoose.Schema
 
-    return User;
-};
+// const UserSchema = Schema({
+//     firstName: {
+//         type: String,
+//         required: true
+//     },
+//     lastName: {
+//         type: String,
+//         required: true
+//     },
+//     dni: {
+//         type: Number,
+//         required: true,
+//         unique: true,
+//     },
+//     email: {
+//         type: String,
+//         required: true,
+//         unique: true,
+//     },
+//     role: {
+//         type: String,
+//         required: true,
+//     },
+//     hiddenStaffNotes: {
+//         type: String,
+//     },
+// },
+//     {
+//         timestamps: true,
+//         versionKey: false,
+//     }
+// );
+
+// // UserSchema.methods.toJSON = function () {
+// //     const { password, _id, ...userData } = this.toObject();
+// //     return userData;
+// // };
+
+// module.exports = mongoose.model('user', UserSchema)
+
+
+
+
+
+
+
+
+
+
+
+
