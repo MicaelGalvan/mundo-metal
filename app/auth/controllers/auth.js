@@ -47,8 +47,6 @@ const registerCtrl = async (req, res) => {
     }
 }
 
-const logoutCtrl = (req, res) => {
-    res.send({ data: 'Logged out successfully' });
-};
 
-module.exports = { loginCtrl, registerCtrl, logoutCtrl }
+
+module.exports = { loginCtrl, registerCtrl }
