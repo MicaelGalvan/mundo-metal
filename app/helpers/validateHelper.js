@@ -1,5 +1,4 @@
 import { validationResult } from 'express-validator';
-// import { httpError } from "../helpers/handleError";
 
 const validateResult = (req, res, next) => {
     try {

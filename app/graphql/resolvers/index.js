@@ -1,10 +1,10 @@
-import userResolvers from '../users/resolvers/userResolvers';
+import { userResolver } from './userResolver.js';
 
-module.exports = {
+export const resolvers = {
     Query: {
-        ...userResolvers.Query,
+        ...userResolver.Query,
     },
     Mutation: {
-        ...userResolvers.Mutation,
+        ...userResolver.Mutation,
     },
 };
