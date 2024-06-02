@@ -1,12 +1,12 @@
-import { findAll, findById, findByEmail, create } from '../repositories/userRepository.js';
+import { createOne, findAll, findById, findByEmail } from '../repositories/userRepository.js';
 import { ValidationError, NotFoundError } from '../errors/index.js';
-import { hashPassword } from '../utils/hashUtils';
+import hashPassword from '../utils/hashUtils.js';
 
-const getAllUsers = async () => {
+export const getAllUsers = async () => {
     return await findAll();
 };
 
-const getUserById = async (id) => {
+export const getUserById = async (id) => {
     const user = await findById(id);
     if (!user) {
         throw new NotFoundError('User not found');
@@ -14,7 +14,7 @@ const getUserById = async (id) => {
     return user;
 };
 
-const createUser = async (userData) => {
+export const createUser = async (userData) => {
     const existingUser = await findByEmail(userData.email);
     if (existingUser) {
         throw new ValidationError('Email is already in use');
@@ -24,11 +24,5 @@ const createUser = async (userData) => {
         ...userData,
         password: hashedPassword,
     };
-    return await create(user);
-};
-
-module.exports = {
-    getAllUsers,
-    getUserById,
-    createUser,
+    return await createOne(user);
 };

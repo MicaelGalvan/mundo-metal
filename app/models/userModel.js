@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 
-const User = sequelize.define('User', {
+export const User = sequelize.define('User', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -28,4 +28,8 @@ const User = sequelize.define('User', {
     tableName: 'users',
 });
 
-export default User;
+// // Add associations if needed
+// User.associate = (models) => {
+//     // Define associations here
+// };
+

@@ -1,6 +1,6 @@
-import userResolver from './userResolver.js';
+import { userResolver } from './userResolver.js';
 
-const resolvers = {
+export const resolvers = {
     Query: {
         ...userResolver.Query,
     },
@@ -8,5 +8,3 @@ const resolvers = {
         ...userResolver.Mutation,
     },
 };
-
-export default resolvers;

@@ -4,9 +4,9 @@ import bodyParser from 'body-parser';
 import { ApolloServer } from 'apollo-server-express';
 import { errorHandler, formatGraphQLError } from './app/middlewares/errorHandler.js';
 import typeDefs from './app/graphql/schemas/index.js';
-import resolvers from './app/graphql/resolvers/index.js';
+import { resolvers } from './app/graphql/resolvers/index.js';
 import routes from './app/routes/index.js';
-import './app/config/dotenv.js';
+import 'dotenv/config'
 
 const app = express();
 

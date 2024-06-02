@@ -1,19 +1,17 @@
-const { User } = require('../models/');
+import models from '../models/index.js';
 
-const findAll = async () => {
-    return await User.findAll();
+export const findAll = async () => {
+    return await models.User.findAll();
 };
 
-const findById = async (id) => {
-    return await User.findByPk(id);
+export const findById = async (id) => {
+    return await models.User.findByPk(id);
 };
 
-const create = async (user) => {
-    return await User.create(user);
+export const findByEmail = async (email) => {
+    return await models.User.findOne({ where: { email } });
 };
 
-module.exports.userRepository = {
-    findAll,
-    findById,
-    create,
+export const createOne = async (user) => {
+    return await models.User.create(user);
 };

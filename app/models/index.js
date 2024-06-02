@@ -1,11 +1,9 @@
-import Sequelize from 'sequelize';
-import { database, username, password, options } from '../config/database';
-
-const sequelize = new Sequelize(database, username, password, options);
+import sequelize from '../config/database.js';
+import { Sequelize } from 'sequelize';
+import { User } from './userModel.js'; // Directly import the model
 
 const models = {
-    User: require('./userModel')(sequelize, Sequelize.DataTypes),
-    Product: require('./productModel')(sequelize, Sequelize.DataTypes),
+    User,
 };
 
 Object.keys(models).forEach(modelName => {
@@ -17,4 +15,4 @@ Object.keys(models).forEach(modelName => {
 models.sequelize = sequelize;
 models.Sequelize = Sequelize;
 
-module.exports = models;
+export default models;
